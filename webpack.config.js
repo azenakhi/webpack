@@ -13,7 +13,7 @@ module.exports = {
         rules: [
             { test: /\.js$/, loader: 'babel-loader' },
             { test: /\.html$/, loader: 'html-loader' },
-            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=images/' }
+            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=assets/' }
         ]
     },
     devtool: 'source-map',
