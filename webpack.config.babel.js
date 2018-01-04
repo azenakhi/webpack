@@ -1,9 +1,9 @@
-var webpack = require('webpack')
-var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+import webpack from 'webpack'
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-module.exports = {
+export default () => ({
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,7 @@ module.exports = {
         rules: [
             { test: /\.js$/, loader: 'babel-loader' },
             { test: /\.html$/, loader: 'html-loader' },
-            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=assets/' }
+            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=images/' }
         ]
     },
     devtool: 'source-map',
@@ -28,4 +28,4 @@ module.exports = {
             { from: 'src/config.json' }
         ])
     ]
-};
+})
