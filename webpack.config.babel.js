@@ -18,6 +18,7 @@ export default () => ({
     },
     devtool: 'source-map',
     devServer: {
+        hot: true,
         contentBase: './dist',
     },
     plugins: [
