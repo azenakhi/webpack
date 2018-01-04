@@ -1,4 +1,4 @@
-import webpack from 'webpack'
+import webpack, { HotModuleReplacementPlugin } from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -13,7 +13,7 @@ export default () => ({
         rules: [
             { test: /\.js$/, loader: 'babel-loader' },
             { test: /\.html$/, loader: 'html-loader' },
-            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=images/' }
+            { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=assets/' }
         ]
     },
     devtool: 'source-map',
@@ -21,6 +21,7 @@ export default () => ({
         contentBase: './dist',
     },
     plugins: [
+        new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
