@@ -11,23 +11,22 @@ export default () => ({
     },
     module: {
         rules: [
-            { test: /\.js$/, loader: 'babel-loader' },
+            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.(jpg)$/, loader: 'file-loader?name=[name].[ext]&outputPath=assets/' }
         ]
     },
     devtool: 'source-map',
     devServer: {
-        hot: true,
-        contentBase: './dist',
+        contentBase: './dist'
     },
     plugins: [
         new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CopyWebpackPlugin([
-            { from: 'src/config.json' }
-        ])
+        new webpack.ProvidePlugin({
+            'React': 'react'
+        })
     ]
 })
